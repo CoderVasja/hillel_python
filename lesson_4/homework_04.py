@@ -65,7 +65,7 @@ print(dec_el)
 """ Розділіть змінну adwentures_of_tom_sawer по кінцю речення.
 Збережіть результат у змінній adwentures_of_tom_sawer_sentences
 """
-adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split('. ',)
+adwentures_of_tom_sawer_sentences = adwentures_of_tom_sawer.split('. ')
 print(adwentures_of_tom_sawer_sentences)
 print(dec_el)
 
