@@ -49,8 +49,9 @@ print('-' * 100)
 # print(people_records[5])
 
 # 3 Визначаємо рік
-print(people_records)
+ages = [people_records[i][2] for i in [6, 10, 13]]
+result = all(x>=30 for x in ages)
+print(result)
 
-print(people_records[6][2] >= 30)
-print(people_records[10][2] >= 30)
-print(people_records[13][2] >= 30)
+
+
