@@ -57,9 +57,10 @@ arithmetic_mean(1,2,3,4,5,6)
 def reverse_string(*args):
 
     reversed_string = ''.join(sorted(args, reverse=True))
-    print(reversed_string)
 
-reverse_string(*'Hello World')
+    return reversed_string
+
+print (reverse_string(*'Hello World'))
 
 #Variant 2
 
@@ -67,24 +68,23 @@ def reverse_string_2(string: str):
 
     reversed_string =  string[::-1]
 
-    print(reversed_string)
+    return reversed_string
 
-reverse_string_2("Hello World")
+print (reverse_string("Hello World"))
  
 
 # task 5
 """  Написати функцію, яка приймає список слів та повертає найдовше слово у списку.
 """
 def longest_word(*args):
-    longest = ''
     
-    for word in args:
-        if len(word) > len(longest):
-            longest = word
-   
-    print(f'The longest word in the list: {longest}')   
+    message = ''
+    longest = max(args,key=len)
+    message = f'The longest word in the list: {longest}' 
 
-longest_word('Test','Lablacla','sty', 'hfjhjdhfjhdfjd')    
+    return message
+
+print(longest_word('Test','Lablacla','sty', 'hfjhjdhfjhdfjd'))    
 
 # task 6
 """  Написати функцію, яка приймає два рядки та повертає індекс першого входження другого рядка
