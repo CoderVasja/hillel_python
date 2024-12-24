@@ -12,7 +12,7 @@ class Figure:
             if value <= 0:
                 raise AttributeError('Side A should be bigger than 0')
         elif key == 'angle_a':
-            if value <= 0 or value >= 179:
+            if value <= 0 or value > 179:
                 raise AttributeError('Angle should be bigger than 0 and less than 179')
 
 
@@ -29,8 +29,9 @@ class Figure:
             if self.angle_a + self.angle_b != 180:
                 raise AttributeError('Sum of angles should be 180')
 
-romb1 = Figure(10, 80,110)
-print(f'\nSide A: {romb1.side_a}\nAngle B: {romb1.angle_b}\nAngle A: {romb1.angle_a}')
+
+romb1 = Figure(5, 80,110)
+print(romb1)
 
 romb1.angle_a = 60
 print(f'\nSide A: {romb1.side_a}\nAngle B: {romb1.angle_b}\nAngle A: {romb1.angle_a}')
