@@ -16,7 +16,7 @@ class Manager(Employee):
 
     def __init__(self, name, salary, department):
 
-        super().__init__(name,salary)
+        Employee.__init__(self, name,salary)
         self.department = department
 
 
@@ -25,7 +25,7 @@ class Developer(Employee):
 
     def __init__(self, name, salary, programming_language):
 
-        super().__init__(name,salary)
+        Employee.__init__(self, name,salary)
         self.programming_language = programming_language
 
 
