@@ -33,7 +33,16 @@ def get_id(length = 6, seq_number = None, step = 1, prefix = None, postfix = Non
 		generated_id += postfix
 	return generated_id
 
-def get_first_name(gender = None):
+def get_gender(first_name):
+	firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
+	gender = ""
+	for data in firstNameFile:
+		if data[0] != '' and data[0] == first_name:
+			gender = data[2]
+			break
+	return gender
+
+def get_first_name(gender):
 	firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
 	filteredData = []
 	if gender == None:
@@ -63,14 +72,6 @@ def get_last_name():
 			filteredData.append(data[1])
 	return choice(filteredData)
 
-def get_gender(first_name):
-	firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
-	gender = ""
-	for data in firstNameFile:
-		if data[0] != '' and data[0] == first_name:
-			gender = data[2]
-			break
-	return gender
 
 def get_country(first_name = None):
 	countryFile = csv.reader(open(full_path('data.csv'), 'r'))
@@ -89,6 +90,7 @@ def get_country(first_name = None):
 				filteredData.append(data[12])
 		country = choice(filteredData)
 	return country
+
 
 def get_full_name(gender = None):
 	return get_first_name(gender) + " " + get_last_name()
@@ -260,9 +262,9 @@ def get_birthdate(startAge = None, endAge = None, _format = "%d %b, %Y"):
 def get_address():
 	full_addr = []
 	addrParam = ['street', 'landmark', 'area', 'city', 'state', 'country', 'pincode']
+	addrFile = csv.reader(open(full_path('data.csv'), 'r'))
+	allAddrs = []
 	for i in range(5,12):
-		addrFile = csv.reader(open(full_path('data.csv'), 'r'))
-		allAddrs = []
 		for addr in addrFile:
 			try:
 				if addr[i] != '':
@@ -272,6 +274,7 @@ def get_address():
 		full_addr.append(choice(allAddrs))
 	full_addr = dict(zip(addrParam, full_addr))
 	return full_addr
+
 
 def get_hobbies():
 	hobbiesFile = csv.reader(open(full_path('data.csv'), 'r'))
@@ -286,15 +289,14 @@ def get_hobbies():
 
 class Person:
 	def __init__(self, gender = None):
-		firstName = get_first_name(gender)
-		self.first_name = firstName
+		self.first_name = get_first_name(gender)
 		self.last_name = get_last_name()
 		self.full_name = self.first_name + " " + self.last_name
 		self.birthdate = get_birthdate()
 		self.phone = get_phone_number()
 		self.email = get_email(self)
-		self.gender = get_gender(firstName)
-		self.country = get_country(firstName)
+		self.gender = get_gender(self.first_name)
+		self.country = get_country(self.first_name)
 		self.paswd = random_password()
 		self.hobbies = get_hobbies()
 		self.address = get_address()
@@ -337,6 +339,8 @@ class Person:
 			"address": self.address,
 			"other_attr": self.customAttr
 		}
+
+
 
 '''
 REFERENCE:
