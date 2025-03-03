@@ -5,7 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def test_successful_registration(driver, registration_page, fill_registration_form, submit_registration):
-
     test_name = "Fname"
     test_last_name = "LName"
     test_email = f"testuser_{random.randint(1000,9999)}@test.com"
